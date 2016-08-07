@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sd_aula03;
+package rascunhos;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import sd_aula03.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,14 +15,14 @@ import java.net.Socket;
  *
  * @author Rafael Reis
  */
-public class ClienteHttpFile {
+public class ClienteHttp {
     public static void main(String[] args) throws IOException{
         Socket s = new Socket("www.ufs.br", 80);
         
         InputStream is = s.getInputStream();
         OutputStream os = s.getOutputStream();
         
-        String msg = "HEAD /uploads/image/path/2/IMG_6365_02.jpg HTTP/1.0" 
+        String msg = "GET /uploads/image/path/2/IMG_6365_02.jpg HTTP/1.0" // HEAD OU GET
                    + "\r\n" 
                    + "Host:www.ufs.br" 
                    + "\r\n" 
@@ -31,16 +30,20 @@ public class ClienteHttpFile {
         byte[] buf = msg.getBytes();
         os.write(buf);
         
-        File file = new File("C:\\Users\\Rafael Reis\\Desktop\\teste\\logo.jpg");
-        FileOutputStream fos = new FileOutputStream(file);
-        
         byte[] bufR = new byte[1024];
         int size = 0;
-        while ((size = is.read(bufR))>0) {
-            fos.write(bufR, 0, size);
+        String linhaEmBranco = "\r\n";
+        while ((size = is.read(bufR))>0) {  // && (size = is.read(bufR) != linhaEmBranco.getBytes();)
             String resp = new String(bufR, 0, size);
             System.out.println(resp);
+            System.out.println("*********TAMANHO DO IS.READ É DE : " + size);
+            
         }
-        fos.close();
+        System.out.println("___________________________________________________________________________________________________"); 
+        
+        while ((size = is.read(bufR))>0) {  // && (size = is.read(bufR) != linhaEmBranco.getBytes();)
+            String resp = new String(bufR, 0, size);
+            System.out.println("____" + resp);    
+        }
     }
 }

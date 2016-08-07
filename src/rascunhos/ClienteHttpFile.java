@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sd_aula03;
+package rascunhos;
 
+import sd_aula03.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class ClienteHttpFile {
         InputStream is = s.getInputStream();
         OutputStream os = s.getOutputStream();
         
-        String msg = "HEAD /uploads/image/path/2/IMG_6365_02.jpg HTTP/1.0" 
+        String msg = "GET /uploads/image/path/2/IMG_6365_02.jpg HTTP/1.0" 
                    + "\r\n" 
                    + "Host:www.ufs.br" 
                    + "\r\n" 
