@@ -1,4 +1,4 @@
-package ExercicioRabbetMQ;
+package sd_aula07;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException;
 
 public class Chat {
     
-    private final static String QUEUE_NAME = "SammuelVilanova";
+    private final static String QUEUE_NAME = "SV";
 
     public static void main(String[] args) throws IOException, TimeoutException {
      //-----------------CONEXÃO COM SERVIDOR-----------------------------
